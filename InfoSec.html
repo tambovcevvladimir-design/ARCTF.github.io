@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Современные ИТ в информационной безопасности | Цифровая защита будущего</title>
+    <meta name="description" content="Обзор ключевых технологий ИБ: ИИ, блокчейн, биометрия, Zero Trust, квантовая криптография. Угрозы, вызовы и перспективы отрасли.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f4f8;
+            color: #111827;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Градиентный акцент */
+        :root {
+            --primary: #0b2b5c;
+            --primary-dark: #071e40;
+            --secondary: #1e6f9f;
+            --accent: #00a6c4;
+            --highlight: #f59e0b;
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --card-bg: #ffffff;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #0b2b5c, #1e6f9f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(120deg, #ffffff 0%, #eef2f9 100%);
+            padding: 3rem 0 4rem;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        /* nav (простой якорь) */
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 0;
+            padding: 1rem 0;
+            border-top: 1px solid #cbd5e1;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+
+        /* Карточки технологий */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 2rem;
+        }
+        .tech-card {
+            background: var(--card-bg);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #eef2ff;
+        }
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbdff2;
+        }
+        .tech-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .tool-list {
+            font-size: 0.85rem;
+            color: #334155;
+            margin-top: 0.75rem;
+            background: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+        }
+
+        /* блок угроз и проблем */
+        .threat-grid, .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .threat-item, .challenge-item {
+            background: #fefce8;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--highlight);
+            font-weight: 500;
+        }
+        .challenge-item {
+            background: #fff1f0;
+            border-left-color: #dc2626;
+        }
+
+        /* перспективы */
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .future-card {
+            background: linear-gradient(145deg, #ffffff, #f5f9ff);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            border: 1px solid #e0e7ff;
+        }
+
+        /* таблица для MFA */
+        .mfa-table {
+            background: #f9f9ff;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Футер */
+        .footer {
+            background: var(--primary-dark);
+            color: #cbd5e6;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        button, .back2top {
+            background: var(--secondary);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 0 1.2rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #cbd5e1, transparent);
+        }
+        .quote {
+            font-style: italic;
+            background: #eef2ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="container hero-content">
+        <div class="badge">Актуально 2025 • Инфобезопасность</div>
+        <h1>Современные информационные технологии <br> в сфере информационной безопасности</h1>
+        <p style="font-size: 1.2rem; color: #2c3e66;">Цифровая трансформация требует нового уровня защиты: ИИ, блокчейн, квантовая криптография и Zero Trust меняют правила игры.</p>
+        <div class="nav-links">
+            <a href="#threats">📡 Угрозы</a>
+            <a href="#tech">🛡️ Технологии</a>
+            <a href="#problems">⚠️ Проблемы</a>
+            <a href="#future">🚀 Перспективы</a>
+            <a href="#conclusion">📌 Выводы</a>
+        </div>
+    </div>
+</section>
+
+<main class="container">
+    <!-- Введение -->
+    <section style="margin: 3rem 0 2rem;">
+        <p style="font-size: 1.1rem; background: #e6f0fa; padding: 1.5rem; border-radius: 2rem;">В эпоху цифровой трансформации информационная безопасность становится критически важной. Рост кибератак, сложных APT-группировок и объёмов данных требует внедрения передовых технологий. Данный обзор охватывает ключевые решения: от ML-аналитики до квантовых каналов связи, а также анализирует вызовы и прогнозы на ближайшее десятилетие.</p>
+    </section>
+
+    <!-- Основные угрозы -->
+    <section id="threats">
+        <h2>🔐 Ключевые угрозы информационной безопасности</h2>
+        <div class="threat-grid">
+            <div class="threat-item">🕵️‍♂️ Фишинг & социальная инженерия</div>
+            <div class="threat-item">💥 DDoS-атаки и вредоносное ПО (вымогатели)</div>
+            <div class="threat-item">📂 Утечки данных / человеческий фактор</div>
+            <div class="threat-item">🎯 Целевые APT-атаки</div>
+            <div class="threat-item">🌐 Уязвимости IoT устройств</div>
+            <div class="threat-item">☁️ Ошибки конфигурации облачных сервисов</div>
+        </div>
+    </section>
+
+    <!-- СОВРЕМЕННЫЕ ТЕХНОЛОГИИ ЗАЩИТЫ -->
+    <section id="tech" style="margin-top: 3rem;">
+        <h2>🧠 Современные технологии защиты информации</h2>
+        <div class="tech-grid">
+            <!-- 1. ИИ/ML -->
+            <div class="tech-card">
+                <div class="tech-icon">🤖🧠</div>
+                <div class="card-title">Искусственный интеллект & ML</div>
+                <p>Обнаружение аномалий, UEBA, прогнозирование атак и автоматическое реагирование. Алгоритмы анализируют поведение пользователей и сетевой трафик.</p>
+                <div class="tool-list">Darktrace • Vectra AI • Microsoft Sentinel</div>
+            </div>
+            <!-- 2. Блокчейн -->
+            <div class="tech-card">
+                <div class="tech-icon">⛓️🔗</div>
+                <div class="card-title">Блокчейн</div>
+                <p>Неизменяемые журналы, децентрализованная идентификация (DID), защита цифровых подписей, аудит цепочек поставок.</p>
+                <div class="tool-list">Hyperledger Fabric • Ethereum для смарт-контрактов</div>
+            </div>
+            <!-- 3. Биометрия -->
+            <div class="tech-card">
+                <div class="tech-icon">👁️🖐️</div>
+                <div class="card-title">Биометрическая аутентификация</div>
+                <p>Распознавание лиц (3D), отпечатки пальцев, сетчатка глаза, голос, поведенческая биометрия. Высокая надёжность против кражи учётных данных.</p>
+            </div>
+            <!-- 4. MFA -->
+            <div class="tech-card">
+                <div class="tech-icon">📱➕🔐</div>
+                <div class="card-title">Многофакторная аутентификация</div>
+                <p>Знание + владение + биометрия. Защита даже при компрометации пароля. Популярные схемы: TOTP, Push-уведомления, аппаратные токены.</p>
+                <div class="tool-list">Google/Microsoft Authenticator • YubiKey</div>
+            </div>
+            <!-- 5. IDS/IPS -->
+            <div class="tech-card">
+                <div class="tech-icon">🛜🛡️</div>
+                <div class="card-title">IDS / IPS</div>
+                <p>Сигнатурный, поведенческий и эвристический анализ. IPS автоматически блокирует вторжения, Snort, Suricata, Cisco Firepower.</p>
+            </div>
+            <!-- 6. Шифрование -->
+            <div class="tech-card">
+                <div class="tech-icon">🔒📁</div>
+                <div class="card-title">Шифрование данных</div>
+                <p>AES-256, RSA, ECC и постквантовые алгоритмы. Сквозное шифрование, FDE (BitLocker), TLS 1.3.</p>
+            </div>
+            <!-- 7. Zero Trust & Cloud -->
+            <div class="tech-card">
+                <div class="tech-icon">☁️🚫🔓</div>
+                <div class="card-title">Zero Trust + CASB</div>
+                <p>«Никогда не доверяй, всегда проверяй». Микросегментация, строгая аутентификация. CASB для мониторинга облачных сервисов.</p>
+                <div class="tool-list">Microsoft Defender for Cloud • Zscaler</div>
+            </div>
+            <!-- 8. Защита от DDoS -->
+            <div class="tech-card">
+                <div class="tech-icon">🌊⛔</div>
+                <div class="card-title">Анти-DDoS</div>
+                <p>Фильтрация трафика, CDN (Cloudflare, Akamai), rate limiting, автоматическое масштабирование.</p>
+            </div>
+            <!-- 9. SOAR -->
+            <div class="tech-card">
+                <div class="tech-icon">⚙️📈</div>
+                <div class="card-title">SOAR (автоматизация ИБ)</div>
+                <p>Сбор данных, оркестрация, плейбуки реагирования. Ускорение обработки инцидентов до 80%.</p>
+                <div class="tool-list">IBM Resilient • Splunk Phantom • Microsoft Sentinel SOAR</div>
+            </div>
+            <!-- 10. Квантовая криптография -->
+            <div class="tech-card">
+                <div class="tech-icon">⚛️🔑</div>
+                <div class="card-title">Квантовая криптография (QKD)</div>
+                <p>Абсолютно стойкий обмен ключами на основе фотонов. Обнаружение прослушивания. Протокол BB84.</p>
+                <div class="tool-list">Спутник Micius • CV-QKD</div>
+            </div>
+            <!-- 11. Защита IoT -->
+            <div class="tech-card">
+                <div class="tech-icon">📡🏠</div>
+                <div class="card-title">Безопасность IoT</div>
+                <p>Сегментация сети, легковесная аутентификация, шифрование MQTT с TLS, платформы AWS IoT / Azure IoT Hub.</p>
+            </div>
+            <!-- 12. DMZ + микросегментация -->
+            <div class="tech-card">
+                <div class="tech-icon">🧩🔀</div>
+                <div class="card-title">DMZ & Микросегментация</div>
+                <p>Изоляция публичных сервисов, программные брандмауэры (NSX, Cisco ACI), снижение горизонтального перемещения.</p>
+            </div>
+        </div>
+        <div class="quote">
+            💡 <strong>Важно:</strong> Современные SIEM/UEBA системы на базе машинного обучения сокращают время обнаружения угроз с недель до минут. А технологии блокчейн обеспечивают неизменяемость логов.
+        </div>
+    </section>
+
+    <!-- ПРОБЛЕМЫ И ВЫЗОВЫ -->
+    <section id="problems">
+        <h2>⚠️ Проблемы и вызовы в сфере ИБ</h2>
+        <div class="challenge-grid">
+            <div class="challenge-item">💰 Высокая стоимость решений (SIEM, SOAR, UEBA) – малый бизнес в зоне риска</div>
+            <div class="challenge-item">👩‍💻 Дефицит кадров: к 2025 г. нехватка 3,5 млн специалистов (ISC)²</div>
+            <div class="challenge-item">🌀 Новые zero-day уязвимости и эволюция ransomware</div>
+            <div class="challenge-item">⚖️ Баланс удобства и безопасности (MFA раздражает, но необходимо)</div>
+            <div class="challenge-item">🏛️ Юридические ограничения (GDPR, ФЗ-152, PCI DSS) и конфликты законов</div>
+            <div class="challenge-item">🖥️ Сложность интеграции с устаревшей (Legacy) инфраструктурой</div>
+            <div class="challenge-item">☁️ Ответственность в облаках – Shared responsibility model и теневой IT</div>
+            <div class="challenge-item">📡 Уязвимости IoT: пароли по умолчанию, отсутствие патчей</div>
+        </div>
+        <div class="quote" style="background:#fef2e0;">
+            📊 Статистика: 74% организаций отмечают, что скорость атак выше, чем скорость реагирования. Автоматизация SOAR становится критической необходимостью.
+        </div>
+    </section>
+
+    <!-- ПЕРСПЕКТИВЫ РАЗВИТИЯ -->
+    <section id="future">
+        <h2>🚀 Перспективы развития информационной безопасности</h2>
+        <div class="future-grid">
+            <div class="future-card"><strong>🤖 Предиктивная защита на базе ИИ</strong><br>Прогнозирование DDoS, автоматизация SOC, генерация плейбуков.</div>
+            <div class="future-card"><strong>⚛️ Квантовая криптография</strong><br>Коммерческие QKD-системы к 2030, спутниковая связь, постквантовая криптография (NIST).</div>
+            <div class="future-card"><strong>📜 Усиление регулирования</strong><br>Нормы для критической инфраструктуры, штрафы за утечки, стандарты ISO 27001:2025.</div>
+            <div class="future-card"><strong>🌐 Безопасный IoT</strong><br>Стандарты ETSI EN 303 645, легковесная криптография, встроенная защита на этапе проектирования.</div>
+            <div class="future-card"><strong>🛡️ Zero Trust повсеместно</strong><br>Микросегментация, Just-in-Time доступ, непрерывная верификация.</div>
+            <div class="future-card"><strong>🧑‍🎓 Киберграмотность & сертификация</strong><br>Массовое обучение, геймификация, программы CISSP / CEH на подъёме.</div>
+            <div class="future-card"><strong>🌍 Threat Intelligence & Dark Web мониторинг</strong><br>Платформы STIX/TAXII, проактивный охват угроз.</div>
+            <div class="future-card"><strong>🔗 Мультимодальная биометрия + децентрализованные ID (блокчейн)</strong><br>Более надёжная и приватная аутентификация.</div>
+        </div>
+    </section>
+
+    <!-- Дополнительный раздел: MFA таблица примеров -->
+    <section style="margin-top: 2rem;">
+        <h2>🔑 Практический фокус: факторы MFA</h2>
+        <div class="mfa-table">
+            <table style="width:100%; border-collapse: collapse; text-align: left;">
+                <thead><tr style="background:#d9e8f5;"><th>Фактор</th><th>Примеры</th><th>Уровень защиты</th></tr></thead>
+                <tbody>
+                    <tr><td>📘 Знание</td><td>Пароль, PIN-код</td><td>Базовый (легко подобрать)</td></tr>
+                    <tr><td>📱 Владение</td><td>SMS-код, TOTP, YubiKey</td><td>Высокий (но SIM-sapping угроза)</td></tr>
+                    <tr><td>🧬 Биометрия</td><td>FaceID, отпечаток, голос</td><td>Очень высокий (требует liveness detection)</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 12px;">✅ Комбинация аппаратного токена + биометрии даёт максимальную устойчивость к компрометации.</p>
+        </div>
+    </section>
+
+    <!-- Акцент на Zero Trust и DDoS-защиту примеры -->
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; margin: 2rem 0;">
+        <div style="flex:1; background:#eef2ff; border-radius: 2rem; padding: 1.2rem;">
+            <h3>🛡️ Пример Zero Trust в действии</h3>
+            <p>Пользователь запрашивает доступ к CRM из отеля. Система проверяет устройство, местоположение, поведение, и даже если логин-пароль верны, без дополнительной верификации или политики доступа – отказ. Микросегментация не позволяет «гулять» по сети.</p>
+        </div>
+        <div style="flex:1; background:#ecfdf5; border-radius: 2rem; padding: 1.2rem;">
+            <h3>🌊 Эволюция DDoS-защиты</h3>
+            <p>Современные провайдеры (Cloudflare, Akamai) используют ML для анализа трафика и автоматического отклонения ботнет-пакетов, обеспечивая поглощение атак мощностью до десятков терабит в секунду.</p>
+        </div>
+    </div>
+
+    <!-- Вывод / итоги -->
+    <section id="conclusion" style="margin: 2rem 0 2rem;">
+        <h2>📌 Заключение: стратегические направления</h2>
+        <div style="background: #ffffff; border-radius: 2rem; padding: 2rem; box-shadow: var(--shadow-sm);">
+            <p>Информационная безопасность переходит от реактивной к предиктивной модели. Ключевые выводы:</p>
+            <ul style="margin-top: 1rem; margin-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <li>✔ <strong>ИИ и ML</strong> — основа современных SOC (центров мониторинга), позволяющая находить аномалии среди миллионов событий.</li>
+                <li>✔ <strong>Блокчейн и биометрия</strong> меняют подход к идентификации, делая взлом цифровых личностей крайне дорогим.</li>
+                <li>✔ <strong>Квантовые технологии</strong> станут стандартом для защиты критической инфраструктуры в ближайшие 10 лет.</li>
+                <li>✔ <strong>Дефицит кадров</strong> компенсируется автоматизацией (SOAR) и киберполигонами для подготовки.</li>
+                <li>✔ <strong>Zero Trust</strong> вытесняет периметровую модель, особенно в гибридных и облачных средах.</li>
+                <li>✔ Регуляторы ужесточают требования, но и стимулируют инвестиции в ИБ (рост рынка на 12-15% ежегодно).</li>
+            </ul>
+            <div class="quote" style="margin-top: 1.5rem;">
+                📈 «По прогнозам Gartner, к 2027 году 75% организаций внедрят программы кибербезопасности на основе комбинации ИИ и практик Zero Trust, что сократит ущерб от взломов на 50%».
+            </div>
+        </div>
+    </section>
+
+    <!-- Доп. авторский блок с соответствием докладу -->
+    <hr>
+    <div style="text-align: center; margin: 2rem 0 1rem; font-size: 0.85rem; color: #2c4c6e;">
+        📄 Материал полностью основан на докладе «Современные информационные технологии в сфере информационной безопасности» — рассмотрены все ключевые технологии: ИИ, ML, блокчейн, биометрия, MFA, IDS/IPS, шифрование, Zero Trust, защита от DDoS, SOAR, квантовая криптография, безопасность IoT, DMZ и микросегментация. <br>А также угрозы, вызовы (стоимость, кадры, Legacy, облака) и перспективы развития до 2030 года.
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 | Аналитический обзор: современные ИТ в информационной безопасности</p>
+        <p style="margin-top: 0.8rem; font-size: 0.8rem;">Данные на основе международных отчётов (ISC)², NIST, Gartner и экспертных публикаций.</p>
+        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" style="margin-top: 1rem; background: #1e6f9f; color: white; border: none;">↑ Вернуться к началу</button>
+    </div>
+</footer>
+
+</body>
+</html>
